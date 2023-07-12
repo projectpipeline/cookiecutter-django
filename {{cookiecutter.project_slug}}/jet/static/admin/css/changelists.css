@@ -1,0 +1,4 @@
+#changelist .results {
+    overflow-x: visible;
+    -webkit-overflow-scrolling: touch;
+}

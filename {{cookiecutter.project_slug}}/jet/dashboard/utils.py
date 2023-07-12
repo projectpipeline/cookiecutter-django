@@ -1,5 +1,5 @@
 from importlib import import_module
-from jet.dashboard import settings
+from apps.jet.dashboard import settings
 
 
 def get_current_dashboard(location):

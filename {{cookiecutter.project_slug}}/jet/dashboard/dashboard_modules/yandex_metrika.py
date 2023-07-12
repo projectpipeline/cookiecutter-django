@@ -1,9 +1,7 @@
 # encoding: utf-8
 import datetime
 import json
-
 from django import forms
-
 try:
     from django.core.urlresolvers import reverse
 except ImportError: # Django 1.11
@@ -14,7 +12,7 @@ from django.utils import formats
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.utils.text import capfirst
-from jet.dashboard.modules import DashboardModule
+from apps.jet.dashboard.modules import DashboardModule
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.utils.encoding import force_text

@@ -4,8 +4,8 @@ import json
 from django.template import Context
 from django.utils import translation
 
-from jet import settings
-from jet.models import PinnedApplication
+from apps.jet import settings
+from apps.jet.models import PinnedApplication
 
 try:
     from django.apps.registry import apps
@@ -22,14 +22,14 @@ except ImportError: # Django 1.11
     from django.urls import reverse, resolve, NoReverseMatch
 
 from django.contrib.admin import AdminSite
-from django.utils.encoding import smart_str as smart_text
+from django.utils.encoding import smart_text
 from django.utils.text import capfirst
 from django.contrib import messages
-from django.utils.encoding import force_str as force_text
+from django.utils.encoding import force_text
 from django.utils.functional import Promise
 from django.contrib.admin.options import IncorrectLookupParameters
 from django.contrib import admin
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 
 try:
@@ -84,7 +84,7 @@ def get_app_list(context, order=True):
                     'perms': perms,
                     'model_name': model._meta.model_name
                 }
-                if perms.get('change', False):
+                if perms.get('change', False) or perms.get('view', False):
                     try:
                         model_dict['admin_url'] = reverse('admin:%s_%s_changelist' % info, current_app=admin_site.name)
                     except NoReverseMatch:

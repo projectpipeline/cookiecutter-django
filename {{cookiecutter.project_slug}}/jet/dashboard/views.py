@@ -8,10 +8,10 @@ except ImportError: # Django 1.11
 from django.forms.formsets import formset_factory
 from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_POST, require_GET
-from jet.dashboard.forms import UpdateDashboardModulesForm, AddUserDashboardModuleForm, \
+from apps.jet.dashboard.forms import UpdateDashboardModulesForm, AddUserDashboardModuleForm, \
     UpdateDashboardModuleCollapseForm, RemoveDashboardModuleForm, ResetDashboardForm
-from jet.dashboard.models import UserDashboardModule
-from jet.utils import JsonResponse, get_app_list, SuccessMessageMixin, user_is_authenticated
+from apps.jet.dashboard.models import UserDashboardModule
+from apps.jet.utils import JsonResponse, get_app_list, SuccessMessageMixin, user_is_authenticated
 from django.views.generic import UpdateView
 from django.utils.translation import ugettext_lazy as _
 

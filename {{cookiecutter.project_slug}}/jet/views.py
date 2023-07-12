@@ -1,8 +1,7 @@
 from django.views.decorators.http import require_POST, require_GET
-
-from jet.forms import AddBookmarkForm, RemoveBookmarkForm, ToggleApplicationPinForm, ModelLookupForm
-from jet.models import Bookmark
-from jet.utils import JsonResponse
+from apps.jet.forms import AddBookmarkForm, RemoveBookmarkForm, ToggleApplicationPinForm, ModelLookupForm
+from apps.jet.models import Bookmark
+from apps.jet.utils import JsonResponse
 
 
 @require_POST

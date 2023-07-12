@@ -5,11 +5,11 @@ except ImportError: # Django 1.11
     from django.urls import reverse
 
 from django.template.loader import render_to_string
-from jet.dashboard import modules
-from jet.dashboard.models import UserDashboardModule
+from apps.jet.dashboard import modules
+from apps.jet.dashboard.models import UserDashboardModule
 from django.utils.translation import ugettext_lazy as _
-from jet.ordered_set import OrderedSet
-from jet.utils import get_admin_site_name, context_to_dict
+from apps.jet.ordered_set import OrderedSet
+from apps.jet.utils import get_admin_site_name, context_to_dict
 
 try:
     from django.template.context_processors import csrf
@@ -55,6 +55,51 @@ class Dashboard(object):
         self.context = context
         self.init_with_context(context)
         self.load_modules()
+
+    def init_with_context(self, context):
+        """
+        Override this method to fill your custom **Dashboard** class with widgets.
+        You should add your widgets to ``children`` and ``available_children`` attributes.
+
+        Usage example:
+
+        .. code-block:: python
+
+            from django.utils.translation import ugettext_lazy as _
+            from jet.dashboard import modules
+            from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
+
+
+            class CustomIndexDashboard(Dashboard):
+                columns = 3
+
+                def init_with_context(self, context):
+                    self.available_children.append(modules.LinkList)
+                    self.children.append(modules.LinkList(
+                        _('Support'),
+                        children=[
+                            {
+                                'title': _('Django documentation'),
+                                'url': 'http://docs.djangoproject.com/',
+                                'external': True,
+                            },
+                            {
+                                'title': _('Django "django-users" mailing list'),
+                                'url': 'http://groups.google.com/group/django-users',
+                                'external': True,
+                            },
+                            {
+                                'title': _('Django irc channel'),
+                                'url': 'irc://irc.freenode.net/django',
+                                'external': True,
+                            },
+                        ],
+                        column=0,
+                        order=0
+                    ))
+
+        """
+        pass
 
     def load_module(self, module_fullname):
         package, module_name = module_fullname.rsplit('.', 1)
@@ -147,51 +192,6 @@ class Dashboard(object):
             js = list(unique_js)
 
         return Media
-
-    def init_with_context(self, context):
-        """
-        Override this method to fill your custom **Dashboard** class with widgets.
-        You should add your widgets to ``children`` and ``available_children`` attributes.
-
-        Usage example:
-
-        .. code-block:: python
-
-            from django.utils.translation import ugettext_lazy as _
-            from jet.dashboard import modules
-            from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
-
-
-            class CustomIndexDashboard(Dashboard):
-                columns = 3
-
-                def init_with_context(self, context):
-                    self.available_children.append(modules.LinkList)
-                    self.children.append(modules.LinkList(
-                        _('Support'),
-                        children=[
-                            {
-                                'title': _('Django documentation'),
-                                'url': 'http://docs.djangoproject.com/',
-                                'external': True,
-                            },
-                            {
-                                'title': _('Django "django-users" mailing list'),
-                                'url': 'http://groups.google.com/group/django-users',
-                                'external': True,
-                            },
-                            {
-                                'title': _('Django irc channel'),
-                                'url': 'irc://irc.freenode.net/django',
-                                'external': True,
-                            },
-                        ],
-                        column=0,
-                        order=0
-                    ))
-
-        """
-        pass
 
 
 class AppIndexDashboard(Dashboard):

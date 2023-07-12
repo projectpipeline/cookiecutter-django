@@ -7,9 +7,9 @@ except ImportError: # Django 1.11
 
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from jet.dashboard.dashboard_modules.yandex_metrika import YandexMetrikaClient
-from jet.dashboard.models import UserDashboardModule
-from jet.dashboard import dashboard
+from apps.jet.dashboard.dashboard_modules.yandex_metrika import YandexMetrikaClient
+from apps.jet.dashboard.models import UserDashboardModule
+from apps.jet.dashboard import dashboard
 from django.utils.translation import ugettext_lazy as _
 
 

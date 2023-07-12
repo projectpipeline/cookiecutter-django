@@ -5,16 +5,14 @@ except ImportError: # Django 1.11
 
 from django.conf.urls import url
 from django.contrib import messages
-from django.http import HttpResponse
 from django.shortcuts import redirect
-from django.utils.translation import ugettext_lazy as _
 from httplib2 import ServerNotFoundError
+from apps.jet.dashboard.dashboard_modules.google_analytics import GoogleAnalyticsClient, ModuleCredentialStorage
+from apps.jet.dashboard.models import UserDashboardModule
+from apps.jet.dashboard import dashboard
+from django.http import HttpResponse
 from oauth2client.client import FlowExchangeError
-
-from jet.dashboard import dashboard
-from jet.dashboard.dashboard_modules.google_analytics import GoogleAnalyticsClient, \
-    ModuleCredentialStorage
-from jet.dashboard.models import UserDashboardModule
+from django.utils.translation import ugettext_lazy as _
 
 
 def google_analytics_grant_view(request, pk):

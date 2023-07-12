@@ -3,18 +3,18 @@ try:
 except ImportError:
     from django.core.management import BaseCommand as NoArgsCommand
 
-from jet.utils import get_original_menu_items
+from apps.jet.utils import get_app_list, get_original_menu_items
 
 
 class Command(NoArgsCommand):
     help = 'Generates example of JET custom apps setting'
     item_order = 0
-    
+
     def handle(self, *args, **options):
         if args:
             raise CommandError("Command doesn't accept any arguments")
         return self.handle_noargs(**options)
-    
+
     def handle_noargs(self, **options):
         class User:
             is_active = True

@@ -7,7 +7,7 @@ try:
 except ImportError:  # Django < 2.0
     from django.views.i18n import javascript_catalog
 
-from jet.views import add_bookmark_view, remove_bookmark_view, toggle_application_pin_view, model_lookup_view
+from apps.jet.views import add_bookmark_view, remove_bookmark_view, toggle_application_pin_view, model_lookup_view
 
 
 app_name = 'jet'

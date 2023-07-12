@@ -1,11 +1,9 @@
 import json
-
 from django import forms
 from django.core.exceptions import ValidationError
-
-from jet.dashboard.models import UserDashboardModule
-from jet.dashboard.utils import get_current_dashboard
-from jet.utils import user_is_authenticated
+from apps.jet.dashboard.models import UserDashboardModule
+from apps.jet.dashboard.utils import get_current_dashboard
+from apps.jet.utils import user_is_authenticated
 
 
 class UpdateDashboardModulesForm(forms.Form):

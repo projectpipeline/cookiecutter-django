@@ -1,12 +1,9 @@
 from __future__ import absolute_import, unicode_literals
-
-import importlib
 import json
-
 from django.db import models
-from django.utils.translation import gettext_lazy as _
-
-from jet.utils import LazyDateTimeEncoder
+from django.utils.translation import ugettext_lazy as _
+from apps.jet.utils import LazyDateTimeEncoder
+import importlib
 
 
 class UserDashboardModule(models.Model):
