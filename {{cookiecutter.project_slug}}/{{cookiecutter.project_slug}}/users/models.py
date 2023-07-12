@@ -9,6 +9,7 @@ from guardian.mixins import GuardianUserMixin
 
 from {{ cookiecutter.project_slug }}.base.models import AbstractBaseModel, CustomField
 
+
 class CustomUserManager(UserManager):
     def get_by_natural_key(self, username):
         return self.get(username=username)
