@@ -1,4 +1,4 @@
-require('./../../utils/jquery-slidefade');
+require('../../utils/jquery-slidefade');
 
 var $ = require('jquery');
 

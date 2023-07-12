@@ -15,7 +15,7 @@
 <div class="changelist-filter-popup admindatefilter">
     <input class="changelist-filter-popup-toggle" type="text" value="{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}" readonly>
     <div class="changelist-filter-popup-content">
-        <form method="GET" action="." id="{{ choices.0.system_name }}-form">
+        <form method="GET" action="" id="{{ choices.0.system_name }}-form">
             {{ spec.form.media }}
             <fieldset class="module aligned">
                 {% for field in spec.form %}
