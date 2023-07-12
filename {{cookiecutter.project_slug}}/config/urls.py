@@ -19,6 +19,7 @@ urlpatterns = [
     ),
     # Django Admin, use {% raw %}{% url 'admin:index' %}{% endraw %}
     path(settings.ADMIN_URL, admin.site.urls),
+    path(f'{settings.ADMIN_URL}doc/', include('django.contrib.admindocs.urls')),
     # User management
     path("users/", include("{{ cookiecutter.project_slug }}.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
