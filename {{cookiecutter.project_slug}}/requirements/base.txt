@@ -55,3 +55,4 @@ django-webpack-loader==1.8.0  # https://github.com/django-webpack/django-webpack
 
 djangoql
 django-json-widget
+django-picklefield
