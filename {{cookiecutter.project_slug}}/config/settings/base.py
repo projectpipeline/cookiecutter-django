@@ -95,9 +95,9 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    {% for app in local_apps %}
+    {%- for app in local_apps %}
     "{{ cookiecutter.project_slug }}.{{ app }}",
-    {% endfor %}
+    {%- endfor %}
     "{{ cookiecutter.project_slug }}.users",
     "{{ cookiecutter.project_slug }}.base",
     'jet.dashboard',
